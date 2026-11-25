@@ -1,0 +1,6 @@
+{
+  "name": "Code Anim",
+  "description": "Step-by-step interactive code execution visualizer for JavaScript, Python, and multi-language programs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

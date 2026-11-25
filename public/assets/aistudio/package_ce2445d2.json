@@ -1,0 +1,1 @@
+{"name":"code-anim","version":"1.0.0","description":"Code Anim - step-by-step code visualizer","scripts":{"start":"node server.js"},"engines":{"node":">=18"}}

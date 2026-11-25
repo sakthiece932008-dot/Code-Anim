@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Code Anim</title>
+<link rel="stylesheet" href="style.css"></head><body><section id="hero"><div class="orb o1"></div><div class="orb o2"></div>
+<div class="wrap"><div class="badge">🎓 Learn coding by watching it run</div>
+<h2 class="big">Code <span>Anim</span></h2>
+<p class="tag">Paste any program. Watch it come alive, one step at a time, explained in plain English. No coding knowledge needed.</p>
+<div class="demo"><div class="bx">age<b>18</b></div><span>→</span><div class="bx hot">age<b>19</b></div><span>→</span><div class="bx">name<b>"Asha"</b></div></div>
+<button class="cta" onclick="startApp()">▶ Start Visualizing</button>
+<div class="langs"><span>Python</span><span>Java</span><span>C</span><span>C++</span><span>JavaScript</span><span>React</span><span>Kotlin</span><span>HTML</span><span>Android</span></div>
+<div class="stats">🔥 <span id="streak">0</span>-day streak &nbsp;·&nbsp; ⭐ <span id="xp">0</span> XP &nbsp;·&nbsp; Every visualization earns 10 XP. Come back daily to grow your streak!</div></div></section>
+<div id="app" style="display:none">
+<header>
+<button onclick="home()">🏠</button><h1>Code <span>Anim</span></h1>
+<select id="lang"><option value="js">JavaScript / Node.js</option><option value="py">Python</option><option value="java">Java</option><option value="c">C</option><option value="cpp">C++</option><option value="kotlin">Kotlin</option><option value="react">React / JSX</option><option value="html">HTML / CSS</option><option value="android">Android (Java/Kotlin/XML)</option><option value="other">Other</option></select>
+
+<button onclick="up.click()">Upload</button><input id="up" type="file" hidden>
+<button onclick="setKey()">🔑 API key</button><button class="p" onclick="go()">Visualize</button><button onclick="edit()">Edit</button>
+</header>
+<div id="msg"></div>
+<main>
+<section class="pane"><h3>Code</h3><textarea id="ta" spellcheck="false" placeholder="Paste your code here, or press Upload to open a file. Then press Visualize."></textarea><div id="code"></div></section>
+<section class="pane"><h3>Animation</h3><div id="anim"></div></section>
+</main>
+<div id="ctl"><button onclick="step(-1)">◀</button><button id="pl" class="p" onclick="play()">▶ Play</button><button onclick="step(1)">▶|</button>
+<input id="sl" type="range" min="0" max="0" value="0"><span id="cnt">0/0</span>
+<label>Speed <input id="spd" type="range" min="1" max="10" value="5" style="width:80px"></label></div>
+<div id="out"></div>
+</div><script src="app.js"></script></body></html>

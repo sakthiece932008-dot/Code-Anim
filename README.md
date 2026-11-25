@@ -1,11 +1,164 @@
-<div align="center">
+# Code Anim
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+**Any supported code. Any supported language. One click. Automatic animation.**
 
-  <h1>Built with AI Studio</h2>
+Code Anim is a universal, interactive programming visualization and learning platform. Write, paste, or upload source code in any of 54 supported programming languages and click **Visualize** to watch how the program executes step by step, inspect variables and data structures, and read beginner-friendly explanations in plain English.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+---
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## Features
 
-</div>
+- **One-Click Automatic Visualization** — Detects the programming language automatically, understands program operations and state changes, selects the best execution engine, and renders adaptive animations without asking the user to pick a category or algorithm.
+- **Universal Declarative Visualization Engine** — Dynamically combines reusable, strictly validated visual primitives according to the actual behavior of any submitted program (finance, OOP, databases, games, scientific computing, machine learning, digital logic, OS scheduling, async/event pipelines, networking, text processing, custom scripts, and DSA):
+  - **Structured Record Tables** (transactions, database query rows, process tables, entity lists with live row/cell diffs)
+  - **Numeric Trend Charts & Bar Graphs** (evolving balances, scores, losses, physics metrics, probabilities)
+  - **Composable Node-and-Edge Diagrams** (state machines, object relationships, layered ML/data flows, call flows)
+  - **Execution & Process Timelines** (CPU scheduling slices, async/event milestones, multi-stage pipelines)
+  - **Digital Signal & Logic Waveforms** (HIGH/LOW square-wave timing tracks and bit/flag states)
+  - **2D Spatial & Coordinate Maps** (moving entities, game positions `(x, y)` with trails, 2D grids & matrices)
+  - **Generic Operation Stage & Memory Boxes** (expressions, branches, loops, outputs, and step-by-step diffs for any ordinary program)
+  - **Specialized Data-Structure Renderers** (arrays, stacks, queues, linked lists, trees, BSTs, heaps, tries, graphs, hash tables, sets, DP tables, and live call stacks) — rendered together when a program mixes multiple paradigms.
+- **Beginner-Friendly Explanations** — Every step includes a plain-English explanation, state change diff, and optional AI-assisted program summary and Programming Tutor grounded in the recorded trace.
+- **Interactive Playback Controls** — Play, Pause, Step Forward, Step Backward, Jump to Start/End, Timeline Scrubber, Playback Speed (`0.25x` to `4x`), Breakpoints on recorded trace lines, Pause on Important Events, and Interactive Learning prediction checkpoints.
+- **Productivity & Study Tools** — Built-in Learning Library, Side-by-Side Algorithm Compare, Local Projects (`My Projects`), Execution History, JSON Project/Trace Export & Import, Light/Dark themes, and Reduced Motion support.
+
+---
+
+## Supported Languages (54 Individually Named Languages)
+
+Code Anim does **not** use a generic "Other" bucket. Every supported language is individually named and selectable.
+
+### Live Execution (6 Languages)
+
+| Language | Execution Engine |
+| :--- | :--- |
+| **JavaScript** | Client-side Acorn AST instrumentation inside an isolated browser Web Worker |
+| **TypeScript** | Server-side `esbuild` type-stripping + isolated browser Web Worker execution |
+| **Python** | Server-side sandboxed Python 3 subprocess (`tracers/py_tracer.py`) using `sys.settrace` |
+| **Java** | Built-in deterministic server-side AST interpreter (escalates advanced OOP/generics to AI Simulation automatically) |
+| **C** | Built-in deterministic server-side AST interpreter (escalates raw pointer arithmetic/macros to AI Simulation automatically) |
+| **C++** | Built-in deterministic server-side AST interpreter (escalates STL templates/classes to AI Simulation automatically) |
+
+### Automatic AI Simulation (48 Languages)
+
+Go, Rust, C#, Kotlin, Swift, Dart, Ruby, PHP, Scala, R, SQL, Bash / Shell, Lua, TypeScript/React (JSX/TSX), HTML/CSS (DOM Layout), JSON/YAML/XML, Julia, Perl, Haskell, Elixir, Erlang, F#, OCaml, Clojure, Groovy, Objective-C, VB.NET, PowerShell, MATLAB, GNU Octave, Fortran, COBOL, Pascal, Delphi / Object Pascal, Assembly (x86 / ARM), Zig, Nim, Crystal, Solidity, Ada, Prolog, Common Lisp, Scheme, Racket, Tcl, AWK, V (Vlang), and WebAssembly Text (WAT).
+
+---
+
+## Live Execution vs. AI-Assisted Execution vs. AI Simulation
+
+Code Anim clearly labels how every visualization was generated:
+
+- **Live Execution** — Your program actually ran inside an isolated browser Web Worker, sandboxed Python 3 subprocess, or the built-in deterministic C/C++/Java AST interpreter.
+- **AI-Assisted Execution** — Your program actually ran via Live Execution, and Gemini provided an additional plain-English summary grounded in the verified trace.
+- **AI Simulation** — Used automatically for languages without a local runtime (or advanced C/C++/Java constructs). Traces are generated server-side by Gemini and clearly labeled with a disclosure notice: *"This animation is generated by AI. Some steps may differ from how the program actually runs."*
+
+Users can opt out of all Gemini AI requests at any time in **Settings → Automatic AI Simulation**.
+
+---
+
+## Installation
+
+### Prerequisites
+
+- **Node.js** 18+ (20+ recommended)
+- **npm** 9+
+- **Python 3** (`python3` or `python` on `PATH`) for live Python execution
+
+### Setup
+
+```bash
+npm install
+```
+
+---
+
+## Required Environment Variables
+
+Create a `.env` file based on `.env.example`:
+
+| Variable | Required | Description |
+| :--- | :--- | :--- |
+| `GEMINI_API_KEY` | Required for AI Simulation & AI Tutor | Server-side Google Gemini API key. Never exposed to the browser bundle. |
+| `PORT` | Optional (default `3000`) | HTTP port for the Express server. |
+| `NODE_ENV` | Optional (`development` / `production`) | Set to `production` to serve the compiled `dist/` frontend bundle. |
+
+Never commit real API keys to version control.
+
+---
+
+## Development
+
+Start the full-stack development server (Express API + Vite middleware on port 3000):
+
+```bash
+npm run dev
+```
+
+Type-check the codebase:
+
+```bash
+npm run lint
+```
+
+Run automated test suites (while the server is running on port 3000):
+
+```bash
+npx tsx tests/phase2.test.ts
+npx tsx tests/phase25.test.ts
+npx tsx tests/phase5.test.ts
+npx tsx tests/phase55.test.ts
+npx tsx tests/phase6.test.ts
+```
+
+---
+
+## Production Build & Running Locally
+
+Build the optimized static frontend bundle into `dist/`:
+
+```bash
+npm run build
+```
+
+Run the production server (serves `dist/` and all `/api/*` endpoints):
+
+```bash
+NODE_ENV=production npm start
+```
+
+---
+
+## Deployment
+
+Code Anim is a standard Node.js + Express full-stack application (`server.ts`) that serves its compiled Vite SPA (`dist/`):
+
+1. Set `GEMINI_API_KEY` and `NODE_ENV=production` in your hosting provider's secret/environment configuration.
+2. Run `npm install && npm run build` during the build step.
+3. Start the service with `npm start` (runs `node server.ts` on `process.env.PORT || 3000`).
+4. Verify `GET /api/health` returns `{ "ok": true, "aiConfigured": true }`.
+
+---
+
+## Security & Privacy Architecture
+
+- **Server-Side Secrets Only** — `GEMINI_API_KEY` is read exclusively in `server.ts` and is never bundled into client JavaScript.
+- **Strict API JSON Boundary** — All `/api/*` routes return structured JSON (`400`/`404`/`405`/`429`/`502`/`503`/`504`) and never fall through to HTML.
+- **Rate Limiting & Payload Bounds** — Compute and AI routes enforce per-IP sliding-window rate limits, a 100 KB source-code limit, a 16 KB stdin limit, and a 512 KB upload/import validation limit.
+- **Execution Isolation**:
+  - JavaScript & TypeScript run inside a client-side Web Worker with a hard execution timeout, step cap, and worker termination.
+  - Python runs inside a separate subprocess with CPU/memory limits, blocked network/file I/O modules, and a hard timeout.
+  - Java, C, and C++ subset programs run inside an in-process deterministic AST interpreter with strict step and recursion caps (no native compiler invocation on untrusted code).
+- **Local-First User Data** — Saved projects, execution history, and settings are stored only in the user's browser `localStorage` and can be cleared in Settings.
+
+### Security Limitations
+
+For high-volume or adversarial public multi-tenant deployments, the Python subprocess uses OS resource limits and import/builtin restrictions rather than full container or microVM sandboxing. Production operators exposing Python execution to untrusted internet traffic should run the Python tracer inside an isolated container/microVM (such as gVisor, Firecracker, or an ephemeral Docker sandbox with no network access).
+
+---
+
+## Known Limitations
+
+- **Built-in C/C++/Java Interpreter Subset** — Covers standard procedural/algorithmic code (variables, arithmetic, strings, arrays/`vector`, conditionals, loops, functions, recursion, `Scanner`/`scanf`/`cin`, `println`/`printf`/`cout`). Programs using classes/inheritance, raw pointers, or external libraries automatically escalate to AI Simulation.
+- **AI Simulation Availability & Quota** — Languages routed through Gemini AI Simulation depend on upstream Gemini API quota and availability. If the API is rate-limited or temporarily unavailable, Code Anim returns a clear non-code error message rather than blaming your source code.
+- **Local Browser Storage** — Projects and execution history are stored per device/browser via `localStorage` (no cloud account sync).
